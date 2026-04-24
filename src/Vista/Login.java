@@ -184,16 +184,21 @@ public class Login extends javax.swing.JFrame {
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso");
 
-                new Compra().setVisible(true);
+                javax.swing.JFrame frame = new javax.swing.JFrame("Menu Principal");
+                frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+
+                frame.setContentPane(new Menu());
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
-            }
-
-            rs.close();
-            ps.close();
-            conn.close();
-
+                }
+        ps.close();
+        rs.close();
+        
         } catch (Exception e) {
             e.printStackTrace();
 }
